@@ -1,2 +1,5 @@
 [git]
     autoPush = true
+
+[hooks.read-source-state.pre]
+    command = "python3 .local/share/chezmoi/.get-machine-type.py"
