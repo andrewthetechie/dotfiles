@@ -1,15 +1,25 @@
-#!/bin/python3
-import os
+#!python3
+import json
 import socket
 
 def get_hostname():
     return socket.gethostname()
 
 def main():
-    hostname = get_hostname()
-    type = input("What is the machine type? ")
-    print(hostname)
-    print(type)
+    try:
+        with open('.chezmoi-machine-type.json', 'r') as file:
+            machine_data = json.load(file)
+    except Exception as e:
+        print(f"An error occurred while loading machine type: {e}. Will prompt for data.")
+        machine_data = {}
+    if 'hostname' not in machine_data:
+        machine_data['hostname'] = get_hostname()
+    if 'machine_type' not in machine_data:
+        machine_data['machine_type'] = input("What is the machine type? ")
+    print(machine_data)
+    print("Writing machine data")
+    with open('.chezmoi-machine-type.json', 'w') as file:
+        json.dump(machine_data, file, indent=4)
 
 if __name__ == "__main__":
     main()
