@@ -1,4 +1,3 @@
-#!python3
 import json
 import socket
 

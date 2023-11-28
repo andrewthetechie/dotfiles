@@ -2,4 +2,4 @@
     autoPush = true
 
 [hooks.read-source-state.pre]
-    command = "{{- .chezmoi.sourceDir -}}/.get-machine-type.py"
+    command = "python3 {{- .chezmoi.sourceDir -}}/.get-machine-type.py"
