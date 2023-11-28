@@ -1,0 +1,134 @@
+#!/bin/zsh
+
+
+ZGEN_LOADED=()
+ZGEN_COMPLETIONS=()
+
+#######################################
+### General Plugins on all Machines ###
+#######################################
+
+# If zsh-syntax-highlighting is bundled after zsh-history-substring-search,
+# they break, so get the order right.
+zgenom load zdharma-continuum/fast-syntax-highlighting
+zgenom load zsh-users/zsh-history-substring-search
+
+# Set keystrokes for substring searching
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# Automatically run zgenom update and zgenom selfupdate every 7 days.
+zgenom load unixorn/autoupdate-zgenom
+
+# Colorize the things if you have grc installed. Well, some of the
+# things, anyway.
+zgenom load unixorn/warhol.plugin.zsh
+
+# Warn you when you run a command that you've set an alias for without
+# using the alias.
+zgenom load djui/alias-tips
+
+# Supercharge your history search with fzf
+zgenom load unixorn/fzf-zsh-plugin
+
+# Enables running the last command with sudo by hitting ESC ESC
+zgenom load hcgraf/zsh-sudo
+
+# colorizes man pages
+zgenom load ael-code/zsh-colored-man-pages
+
+# plugin saves your initial working directory in $IWD for easy returns to the starting point of your session.
+zgenom load zshzoo/iwd
+
+# git
+# git aliases like gst and gca
+zgenom load mdumitru/git-aliases
+# Adds aliases to open your current repo & branch on github.
+zgenom load peterhurford/git-it-on.zsh
+# Adds fzf to git
+zgenom load wfxr/forgit
+# Adds git-cleabranch
+zgenom load gobriansteele/git-clean-branch
+
+# ssh tab completion
+zgenom load sunlei/zsh-ssh
+
+# tmux colors
+zgenom load TBSliver/zsh-plugin-tmux-simple
+
+# wd allows to jump to directories
+zgenom load mfaerevaag/wd
+
+# plugin that adds fuzzy search for directories "warped" with WD Zsh plugin.
+zgenom load spodin/zsh-fuzzy-wd
+
+# 256color mode for zsh
+zgenom load chrissicool/zsh-256color
+
+# Load more completion files for zsh from the zsh-lovers github repo.
+zgenom load zsh-users/zsh-completions src
+
+# A simple zsh plugin to replace Ctrl-r with an fzf-driven, searchable list of history.
+zgenom load joshskidmore/zsh-fzf-history-search
+
+# command-not-found suggests packages to install if a missing command
+zgenom load Freed-Wu/zsh-command-not-found
+
+# replaces ls and tree with aliases for exa
+zgenom load birdhackor/zsh-exa-ls-plugin
+
+# Adds cross-platform clipboard tools 
+# pbcopy, pbpaste, clip
+zgenom load zpm-zsh/clipboard
+
+########################################
+### MacOS Plugins                    ###
+########################################
+
+# Tumult adds macOS-specific functions and scripts
+zgenom load unixorn/tumult.plugin.zsh
+
+# Adds some macos tools to zsh
+zgenom load zshzoo/macos
+
+# adds some aliases for dealing with brew
+zgenom load sticklerm3/alehouse
+
+########################################
+### Developer Plugins                ###
+########################################
+
+# Docker completion
+zgenom load srijanshetty/docker-zsh
+
+# Pyenv
+zgenom load mattberther/zsh-pyenv
+
+# kubectl
+zgenom load bonnefoa/kubectl-fzf
+zgenom load chrishrb/zsh-kubectl
+# kubectx and kubens
+zgenom load unixorn/kubectx-zshplugin
+
+# zsh-nvm plugin
+zgenom load lukechilds/zsh-nvm
+
+# vsc plugin sets up shortcuts for vscode opening
+zgenom load davidtong/vsc.plugin.zsh
+
+# Load me last
+GENCOMPL_FPATH=$HOME/.zsh/complete
+# Very cool plugin that generates zsh completion functions for commands
+# if they have getopt-style help text. It doesn't generate them on the fly,
+# you'll have to explicitly generate a completion, but it's still quite cool.
+zgenom load RobSis/zsh-completion-generator
+
+# Add Fish-like autosuggestions to your ZSH.
+zgenom load zsh-users/zsh-autosuggestions
+
+# powerlevel 10k
+zgenom load romkatv/powerlevel10k powerlevel10k
+
+# Save it all to init script
+zgenom save
