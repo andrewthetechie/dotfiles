@@ -1,3 +1,4 @@
+#!/bin/python3
 import os
 import socket
 
@@ -6,7 +7,7 @@ def get_hostname():
 
 def main():
     hostname = get_hostname()
-    type = input("What is the machine type?")
+    type = input("What is the machine type? ")
     print(hostname)
     print(type)
 
