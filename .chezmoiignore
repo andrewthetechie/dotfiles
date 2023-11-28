@@ -1,5 +1,8 @@
 README.md
 Makefile
+.gitignore
+
 .chezmoiscripts/README.md
 
 .get-machine-type.py
+.pre-hooks.sh
