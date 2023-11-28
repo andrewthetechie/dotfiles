@@ -1,5 +1,5 @@
 #!/bin/zsh
-
+{{- $machine_data := include ".chezmoi-machine-type.json" | mustFromJson }}
 
 ZGEN_LOADED=()
 ZGEN_COMPLETIONS=()
@@ -41,16 +41,6 @@ zgenom load ael-code/zsh-colored-man-pages
 # plugin saves your initial working directory in $IWD for easy returns to the starting point of your session.
 zgenom load zshzoo/iwd
 
-# git
-# git aliases like gst and gca
-zgenom load mdumitru/git-aliases
-# Adds aliases to open your current repo & branch on github.
-zgenom load peterhurford/git-it-on.zsh
-# Adds fzf to git
-zgenom load wfxr/forgit
-# Adds git-cleabranch
-zgenom load gobriansteele/git-clean-branch
-
 # ssh tab completion
 zgenom load sunlei/zsh-ssh
 
@@ -82,6 +72,7 @@ zgenom load birdhackor/zsh-exa-ls-plugin
 # pbcopy, pbpaste, clip
 zgenom load zpm-zsh/clipboard
 
+{{- if eq .chezmoi.os "darwin" }}
 ########################################
 ### MacOS Plugins                    ###
 ########################################
@@ -94,10 +85,21 @@ zgenom load zshzoo/macos
 
 # adds some aliases for dealing with brew
 zgenom load sticklerm3/alehouse
+{{- end }}
 
+{{- if not eq machine_data.machine_type "server" "container" }}
 ########################################
 ### Developer Plugins                ###
 ########################################
+# git
+# git aliases like gst and gca
+zgenom load mdumitru/git-aliases
+# Adds aliases to open your current repo & branch on github.
+zgenom load peterhurford/git-it-on.zsh
+# Adds fzf to git
+zgenom load wfxr/forgit
+# Adds git-cleabranch
+zgenom load gobriansteele/git-clean-branch
 
 # Docker completion
 zgenom load srijanshetty/docker-zsh
@@ -116,6 +118,7 @@ zgenom load lukechilds/zsh-nvm
 
 # vsc plugin sets up shortcuts for vscode opening
 zgenom load davidtong/vsc.plugin.zsh
+{{- end }}
 
 # Load me last
 GENCOMPL_FPATH=$HOME/.zsh/complete
