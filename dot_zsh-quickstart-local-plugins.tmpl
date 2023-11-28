@@ -87,7 +87,7 @@ zgenom load zshzoo/macos
 zgenom load sticklerm3/alehouse
 {{- end }}
 
-{{- if not eq $machine_data.machine_type "server" "container" }}
+{{- if (or (ne $machine_data.machine_type "server") (ne $machine_data.machine_type "container")) }}
 ########################################
 ### Developer Plugins                ###
 ########################################
