@@ -1,5 +1,5 @@
 #!/bin/zsh
-{{- $machine_data := include ".chezmoi-machine-type.json" | mustFromJson }}
+{{- $machine_data := include "{{ .chezmoi.sourceDir }}/.chezmoi-machine-type.json" | mustFromJson }}
 
 ZGEN_LOADED=()
 ZGEN_COMPLETIONS=()
