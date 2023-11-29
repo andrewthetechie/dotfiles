@@ -1,7 +1,8 @@
 #!/bin/sh
+set -e
 {{ if eq .chezmoi.os "linux" -}}
 PACKAGE_LIST="fzf tmux stow"
-if ! command -v sudo &> /dev/null
+if command -v sudo &> /dev/null
 then
   echo "Installing $PACKAGE_LIST with sudo apt"
   sudo apt install "$PACKAGE_LIST"
