@@ -1,0 +1,3 @@
+{{ else if eq .chezmoi.os "darwin" -}}
+{{ .chezmoi.homeDir }}/.zshrc.d/10-gnuutils.sh
+{{ end -}}
