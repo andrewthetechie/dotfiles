@@ -1,5 +1,8 @@
 [git]
     autoPush = true
 
+[scriptEnv]
+    CZ_DIR = "{{ .chezmoi.sourceDir }}"
+
 [hooks.read-source-state.pre]
     command = "{{ .chezmoi.sourceDir }}/.pre-hooks.sh"

@@ -1,12 +1,15 @@
 import json
 import socket
+import os
+
+CZ_DIR = os.environ.get("CZ_DIR")
 
 def get_hostname():
     return socket.gethostname()
 
 def main():
     try:
-        with open('{{ .chezmoi.sourceDir }}/.chezmoi-machine-data.json', 'r') as file:
+        with open(f'{CZ_DIR}/.chezmoi-machine-data.json', 'r') as file:
             machine_data = json.load(file)
     except Exception as e:
         print(f"An error occurred while loading machine type: {e}. Will prompt for data.")
@@ -16,7 +19,7 @@ def main():
     if 'machine_type' not in machine_data:
         machine_data['machine_type'] = input("What is the machine type? ")
 
-    with open('{{ .chezmoi.sourceDir }}/.chezmoi-machine-data.json', 'w') as file:
+    with open(f'{ CZ_DIR }/.chezmoi-machine-data.json', 'w') as file:
         json.dump(machine_data, file, indent=4)
 
 if __name__ == "__main__":
