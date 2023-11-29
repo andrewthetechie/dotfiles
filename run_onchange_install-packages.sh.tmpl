@@ -1,0 +1,23 @@
+#!/bin/sh
+{{ if eq .chezmoi.os "linux" -}}
+PACKAGE_LIST="fzf tmux stow"
+if ! command -v sudo &> /dev/null
+then
+  sudo apt install "$PACKAGE_LIST"
+else
+  apt install "$PACKAGE_LIST"
+fi
+{{ else if eq .chezmoi.os "darwin" -}}
+PACKAGE_LIST="coreutils fzf tmux stow"
+brew install "$PACKAGE_LIST"
+{{ end -}}
+
+# zgenom
+git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+
+# zsh starter-kit
+git clone https://github.com/unixorn/zsh-quickstart-kit.git "${HOME}/.zsh-quckstart-kit"
+this_dir=$(pwd)
+cd "${HOME}/.zsh-quckstart-kit"
+stow --target="$HOME" zsh
+cd "$this_dir"
