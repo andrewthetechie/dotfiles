@@ -1,0 +1,11 @@
+#!/bin/sh
+{{ if eq .chezmoi.os "linux" -}}
+TO_DELETE="{{ .chezmoi.homeDir }}/.zshrc.d/10-gnuutils.sh"
+{{ else if eq .chezmoi.os "darwin" -}}
+TO_DELETE=""
+{{ end -}}
+
+# remove this when we have darwin files to delete
+{{ if eq .chezmoi.os "linux" -}}
+rm -f $TO_DELETE
+{{ end -}}
