@@ -4,11 +4,11 @@ set -e
 PACKAGE_LIST="fzf tmux stow"
 if command -v sudo &> /dev/null
 then
-  echo "Installing $PACKAGE_LIST with sudo apt"
-  sudo apt install "$PACKAGE_LIST"
-else
   echo "Installing $PACKAGE_LIST with apt"
-  apt install "$PACKAGE_LIST"
+  apt-get install -y $PACKAGE_LIST
+else
+  echo "Installing $PACKAGE_LIST with sudo apt"
+  sudo apt-get install -y $PACKAGE_LIST
 fi
 {{ else if eq .chezmoi.os "darwin" -}}
 PACKAGE_LIST="coreutils fzf tmux stow"
