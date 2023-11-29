@@ -1,0 +1,11 @@
+{{- $machine_data_path := joinPath .chezmoi.sourceDir ".chezmoi-machine-data.json" -}}
+{{- $machine_data := include $machine_data_path | mustFromJson -}}
+Host *
+  ServerAliveInterval 60
+  GSSAPIAuthentication=no
+  StrictHostKeyChecking=no
+{{- if eq $machine_data.machine_type "work" }}
+  IdentityFile ~/.ssh/work_key
+{{- else }}
+  IdentityFile ~/.ssh/personal_key
+{{- end }}
