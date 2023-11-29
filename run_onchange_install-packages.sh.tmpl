@@ -13,7 +13,7 @@ fi
 {{ else if eq .chezmoi.os "darwin" -}}
 PACKAGE_LIST="coreutils fzf tmux stow"
 echo "Installing $PACKAGE_LIST with brew"
-brew install "$PACKAGE_LIST"
+brew install $PACKAGE_LIST
 {{ end -}}
 
 # zgenom
