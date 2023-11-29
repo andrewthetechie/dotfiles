@@ -1,5 +1,5 @@
 #!/bin/zsh
-{{- $machine_data_path := joinPath chezmoi.sourceDir ".chezmoi-machine-type.json" }}
+{{- $machine_data_path := joinPath .chezmoi.sourceDir ".chezmoi-machine-type.json" }}
 {{- $machine_data := include $machine_data_path | mustFromJson }}
 
 ZGEN_LOADED=()
