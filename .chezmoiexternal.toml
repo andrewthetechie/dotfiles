@@ -1,0 +1,12 @@
+[".zgenom"]
+    type = "archive"
+    url = "https://github.com/jandamm/zgenom/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".zsh-quckstart-kit"]
+    type = "archive"
+    url = "https://github.com/unixorn/zsh-quickstart-kit/archive/main.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
