@@ -15,13 +15,3 @@ PACKAGE_LIST="coreutils fzf tmux stow"
 echo "Installing $PACKAGE_LIST with brew"
 brew install $PACKAGE_LIST
 {{ end -}}
-
-# zgenom
-git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
-
-# zsh starter-kit
-git clone https://github.com/unixorn/zsh-quickstart-kit.git "${HOME}/.zsh-quckstart-kit"
-this_dir=$(pwd)
-cd "${HOME}/.zsh-quckstart-kit"
-stow --target="$HOME" zsh
-cd "$this_dir"
