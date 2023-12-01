@@ -15,3 +15,15 @@ PACKAGE_LIST="coreutils fzf tmux stow"
 echo "Installing $PACKAGE_LIST with brew"
 brew install $PACKAGE_LIST
 {{ end -}}
+
+QUICKSTART_DIR="${HOME}/.zsh-quickstart-kit"
+REPO_URL="https://github.com/unixorn/zsh-quickstart-kit.git"
+
+# Check if the directory exists
+if [ ! -d "$QUICKSTART_DIR" ]; then
+    echo "Cloning zsh-quickstart-kit..."
+    git clone "$REPO_URL" "$QUICKSTART_DIR"
+    echo "Cloned zsh-quickstart-kit into $QUICKSTART_DIR"
+else
+    echo "zsh-quickstart-kit already exists in $QUICKSTART_DIR"
+fi
