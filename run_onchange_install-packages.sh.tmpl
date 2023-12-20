@@ -5,7 +5,7 @@ PACKAGE_LIST="fzf tmux stow"
 if command -v sudo &> /dev/null
 then
   echo "Installing $PACKAGE_LIST with sudo apt"
-  apt-get install -y $PACKAGE_LIST
+  sudo apt-get install -y $PACKAGE_LIST
 else
   echo "Installing $PACKAGE_LIST with apt"
   apt-get install -y $PACKAGE_LIST
